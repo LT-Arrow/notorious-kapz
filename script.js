@@ -27,3 +27,13 @@ document.getElementById('share').addEventListener('click', async () => {
     status.textContent = error.name === 'AbortError' ? '' : 'Copy the address from your browser to share this page.';
   }
 });
+
+document.getElementById('copy-email').addEventListener('click', async () => {
+  const status = document.getElementById('contact-status');
+  try {
+    await navigator.clipboard.writeText('Munozpressuerwashing@gmail.com');
+    status.textContent = 'Email address copied.';
+  } catch {
+    status.textContent = 'Select and copy the email address above, or use the email button.';
+  }
+});
