@@ -37,3 +37,17 @@ document.getElementById('copy-email').addEventListener('click', async () => {
     status.textContent = 'Select and copy the email address above, or use the email button.';
   }
 });
+
+const menuToggle = document.getElementById('menu-toggle');
+const mainNav = document.getElementById('main-nav');
+menuToggle.addEventListener('click', () => {
+ const expanded = menuToggle.getAttribute('aria-expanded') !== 'true';
+ menuToggle.setAttribute('aria-expanded', String(expanded));
+ menuToggle.setAttribute('aria-label', expanded ? 'Close navigation' : 'Open navigation');
+ mainNav.classList.toggle('open', expanded);
+});
+mainNav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+ mainNav.classList.remove('open');
+ menuToggle.setAttribute('aria-expanded', 'false');
+ menuToggle.setAttribute('aria-label', 'Open navigation');
+}));
